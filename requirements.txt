@@ -1,0 +1,32 @@
+# Core LangChain
+langchain
+langchain-core
+langchain-community
+
+# Groq LLM integration
+langchain-groq
+groq
+
+# Embeddings (HuggingFace, local/free)
+langchain-huggingface
+sentence-transformers
+
+# Vector store
+langchain-chroma
+chromadb
+
+# Config/YAML utilities (same as your MLOps project)
+pyyaml
+python-box
+ensure
+python-dotenv
+
+# Data handling
+pandas
+
+# Eval / structured outputs
+pydantic
+
+# Jupyter (for your notebook-first prototyping phase)
+ipykernel
+jupyter

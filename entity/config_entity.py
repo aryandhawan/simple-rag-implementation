@@ -12,4 +12,9 @@ class ChunkingConfig:
     root_dir: Path
     chunk_size: int
     chunk_overlap: int
-    
+
+@dataclass(frozen=True)
+class EmbeddingConfig:
+    root_dir: Path
+    model_name: str
+    vector_store_path: Path

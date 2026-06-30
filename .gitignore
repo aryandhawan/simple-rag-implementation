@@ -1,3 +1,5 @@
 venv/
 .claude/
 bot_project.egg-info/
+artifacts/
+__pycache__/

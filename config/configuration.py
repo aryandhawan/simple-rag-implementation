@@ -5,7 +5,7 @@ import yaml
 import os
 from ensure import ensure_annotations
 from box import ConfigBox
-from entity.config_entity import ChunkingConfig, DataIngestionConfig
+from entity.config_entity import ChunkingConfig, DataIngestionConfig,EmbeddingConfig
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -63,5 +63,14 @@ class ConfigurationManager:
             chunk_overlap=config.chunk_overlap
         )
     
-    
+    def get_embedding_config(self)-> EmbeddingConfig:
+        config=self.config.embedding
+        create_directories([Path(config.root_dir)], verbose=True)
+        # Create and return a EmbeddingConfig instance
+        return EmbeddingConfig(
+            root_dir=Path(config.root_dir),
+            model_name=config.model_name,
+            vector_store_path=config.vector_store_path
+        )
+
     

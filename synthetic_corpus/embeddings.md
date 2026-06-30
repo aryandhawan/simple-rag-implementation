@@ -1,0 +1,15 @@
+# Embeddings
+
+An embedding is a dense, fixed-length vector of real numbers that represents a piece of data — most commonly text — in a high-dimensional space. The core idea is that semantically similar items should map to vectors that are geometrically close to one another, measured by distances like cosine similarity or Euclidean distance. This numerical representation allows machine learning models to reason about language, images, or any structured data in a mathematically tractable way.
+
+Word embeddings were among the earliest and most influential applications of this idea. Models like Word2Vec and GloVe learned vector representations for individual words by analyzing their co-occurrence patterns across large text corpora. The famous result from Word2Vec — that vector("king") - vector("man") + vector("woman") ≈ vector("queen") — demonstrated that embeddings can encode meaningful semantic and syntactic relationships. Each word is assigned a vector of typically 100–300 dimensions, and the geometry of those vectors reflects how words relate to one another in meaning.
+
+Modern language models produce contextual embeddings, where the representation of a word depends not just on the word itself but on its surrounding context. BERT, for example, generates a different embedding for the word "bank" depending on whether it appears in a sentence about finance or about riverbanks. These contextual embeddings are typically extracted from one of the model's internal layers and carry far richer information than static word-level embeddings.
+
+Sentence and document embeddings extend the concept beyond single words. Models such as Sentence-BERT (SBERT) are trained to produce a single vector that represents the overall meaning of an entire sentence or passage. These are particularly useful for tasks like semantic search, clustering, and retrieval-augmented generation, where the system needs to compare entire passages rather than individual tokens.
+
+The dimensionality of an embedding is a critical design choice. Higher-dimensional spaces can represent more nuanced distinctions but require more memory and computation. Typical embedding dimensions range from 384 to 3072 in modern text embedding models. Dimensionality reduction techniques like PCA or UMAP are sometimes applied to compress embeddings for visualization or to speed up similarity search.
+
+Training embeddings involves optimizing a loss function that pulls similar items together and pushes dissimilar ones apart. Contrastive learning objectives, such as those used in SimCSE or OpenAI's text embedding models, expose the model to positive pairs (semantically related passages) and negative pairs, teaching it to produce geometrically consistent representations.
+
+Embeddings are stored and queried using vector databases such as Pinecone, Weaviate, or Faiss. These systems support approximate nearest-neighbor search, which returns the most similar vectors to a query embedding far faster than exhaustive brute-force comparison. This retrieval capability forms the backbone of modern semantic search and RAG pipelines.

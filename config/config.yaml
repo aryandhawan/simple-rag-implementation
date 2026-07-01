@@ -3,7 +3,6 @@ artifact_root: artifacts
 data_ingestion:
   root_dir: artifacts/data_ingestion
   corpus_dir: synthetic_corpus
-  eval_set_path: synthetic_corpus/eval_set.jsonl
 
 chunking:
   root_dir: artifacts/chunking
@@ -12,22 +11,23 @@ chunking:
 
 embedding:
   root_dir: artifacts/embedding
-  model_name: all-MiniLM-L6-v2
+  model_name: all-mpnet-base-v2
   vector_store_path: artifacts/embedding/vector_store
 
 retrieval:
   root_dir: artifacts/retrieval
-  top_k: 5
+  top_k: 10
 
 generation:
   root_dir: artifacts/generation
-  model_name: openai/gpt-oss-120b
+  model_name: llama-3.3-70b-versatile
   temperature: 0.4
   max_tokens: 1024
 
 evaluation:
   root_dir: artifacts/evaluation
-  judge_model_name: openai/gpt-oss-20b
+  eval_set_path: synthetic_corpus/eval_set.jsonl
+  judge_model_name: llama-3.3-70b-versatile
   smoke_test_questions: [3, 17, 22, 41, 55, 68, 74, 80, 88, 95]
   keyword_coverage_threshold: 0.7
   accuracy_threshold: 3.5

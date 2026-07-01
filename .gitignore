@@ -3,3 +3,7 @@ venv/
 bot_project.egg-info/
 artifacts/
 __pycache__/
+*.pyc
+*.pyo
+.env
+

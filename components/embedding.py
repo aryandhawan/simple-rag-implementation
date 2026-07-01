@@ -25,4 +25,4 @@ class Embedding:
             persist_directory=str(self.config.vector_store_path),
             collection_name="ai_ml_concepts"
         )
-        return vector_store
+        return vector_store 

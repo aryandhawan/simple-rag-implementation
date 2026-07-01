@@ -18,3 +18,7 @@ class Retriever:
 
         return retriever.invoke(query)
     
+    def get_retriever(self):
+        return self.vector_store.as_retriever(
+        search_kwargs={"k": self.config.top_k}
+    )

@@ -5,7 +5,7 @@ import yaml
 import os
 from ensure import ensure_annotations
 from box import ConfigBox
-from entity.config_entity import ChunkingConfig, DataIngestionConfig,EmbeddingConfig
+from entity.config_entity import ChunkingConfig, DataIngestionConfig,EmbeddingConfig, RetrievalConfig,GenerationConfig,EvaluationConfig
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -49,7 +49,6 @@ class ConfigurationManager:
         data_ingestion_config = DataIngestionConfig(
             root_dir=Path(config.root_dir),
             corpus_dir=Path(config.corpus_dir),
-            eval_set_path=Path(config.eval_set_path)
         )
         return data_ingestion_config
     
@@ -73,4 +72,35 @@ class ConfigurationManager:
             vector_store_path=config.vector_store_path
         )
 
+    def get_retrieval_config(self) -> RetrievalConfig:
+        config = self.config.retrieval
+        create_directories([Path(config.root_dir)], verbose=True)
+        # Create and return a RetrievalConfig instance
+        return RetrievalConfig(
+            root_dir=Path(config.root_dir),
+            top_k=config.top_k
+        )
+
+    def get_generation_config(self) -> GenerationConfig:
+        config = self.config.generation
+        create_directories([Path(config.root_dir)], verbose=True)
+        # Create and return a GenerationConfig instance
+        return GenerationConfig(
+            root_dir=Path(config.root_dir),
+            model_name=config.model_name,
+            temperature=config.temperature,
+            max_tokens=config.max_tokens
+        )
     
+    def get_evaluation_config(self) -> EvaluationConfig:
+        config = self.config.evaluation
+        create_directories([Path(config.root_dir)], verbose=True)
+        # Create and return an EvaluationConfig instance
+        return EvaluationConfig(
+            root_dir=Path(config.root_dir),
+            judge_model_name=config.judge_model_name,
+            eval_set_path=Path(config.eval_set_path),
+            smoke_test_questions=config.smoke_test_questions,
+            keyword_coverage_threshold=config.keyword_coverage_threshold,
+            accuracy_threshold=config.accuracy_threshold
+        )

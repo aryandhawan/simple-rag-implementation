@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  ragbot:
+    build: .
+    image: ragbot:latest
+    container_name: ragbot
+    ports:
+      - "8501:8501"
+
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+
+    volumes:
+      - ./artifacts:/app/artifacts
+
+    restart: unless-stopped

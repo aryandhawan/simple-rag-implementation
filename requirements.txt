@@ -30,3 +30,7 @@ ragas
 # Jupyter (for your notebook-first prototyping phase)
 ipykernel
 jupyter
+
+# UI
+
+streamlit
